@@ -1,4 +1,4 @@
 class Favorite < ActiveRecord::Base
-  belongs_to :categoryBookmark
+  belongs_to :category_bookmark
   belongs_to :bookmark
 end

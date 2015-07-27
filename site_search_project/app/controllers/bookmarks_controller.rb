@@ -1,4 +1,6 @@
-class BooksmarksController < ApplicationController
+class BookmarksController < ApplicationController
+  before_action :set_bookmark, only: [:show, :edit, :update, :destroy]
+
   def index
     @bookmarks = Bookmark.all
   end
@@ -48,4 +50,9 @@ class BooksmarksController < ApplicationController
         :user_id
         :categoryBookmark_id => [])
     end
+
+    def set_bookmark
+      @bookmark = Bookmark.find_by(id: params[:id])
+    end
+
 end

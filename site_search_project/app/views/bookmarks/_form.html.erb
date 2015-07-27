@@ -1,0 +1,32 @@
+<%= form_for(@bookmark, html:{class:"form-horizontal", role:"form"}) do |f| %>
+<%=render partial: 'bookmarks/errors', locals:{instance:@bookmark} %>
+
+	<div class="form-group">
+		<%= f.label :name, class:"col-md-2" %>
+		<div class="col-sm-7">
+			<%=f.text_field :name, class:"form-control" %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :url, class:"col-md-2" %>
+		<div class="col-sm-7">
+			<%=f.text_field :url, class:"form-control" %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.collection_check_boxes(:categorybookmark_ids, @categorybookmarks, :id, :name) do |b| %>
+			<span>
+				<%= b.check_box %>
+				<%= b.label %>
+			</span>
+		<% end %>
+	</div>
+
+	<div class="actions col-sm-offset-2">
+		<%= f.submit class:"btn btn-primary" %>
+		<%= link_to 'Cancel', booksmark_path, class:"btn btn-default" %>
+	</div>
+
+	<% end %>

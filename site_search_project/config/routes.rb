@@ -4,36 +4,38 @@ Rails.application.routes.draw do
 
  # Do booksmarks need to go under the createBookmark routes?
  # double check that create update destroy uses the user_id
+ root "users#index"
 
-  resources :user do
-    resources :booksmarks, shallow: true
+  # resources :users do
+    resources :bookmarks, shallow: true
     resources :categorybookmarks, shallow: true
-  end
+  # end
 
 end
 
 
-# user_booksmarks GET    /user/:user_id/booksmarks(.:format)            booksmarks#index
-#                           POST   /user/:user_id/booksmarks(.:format)            booksmarks#create
-#        new_user_booksmark GET    /user/:user_id/booksmarks/new(.:format)        booksmarks#new
-#            edit_booksmark GET    /booksmarks/:id/edit(.:format)                 booksmarks#edit
-#                 booksmark GET    /booksmarks/:id(.:format)                      booksmarks#show
-#                           PATCH  /booksmarks/:id(.:format)                      booksmarks#update
-#                           PUT    /booksmarks/:id(.:format)                      booksmarks#update
-#                           DELETE /booksmarks/:id(.:format)                      booksmarks#destroy
-#    user_categorybookmarks GET    /user/:user_id/categorybookmarks(.:format)     categorybookmarks#index
-#                           POST   /user/:user_id/categorybookmarks(.:format)     categorybookmarks#create
-# new_user_categorybookmark GET    /user/:user_id/categorybookmarks/new(.:format) categorybookmarks#new
-#     edit_categorybookmark GET    /categorybookmarks/:id/edit(.:format)          categorybookmarks#edit
-#          categorybookmark GET    /categorybookmarks/:id(.:format)               categorybookmarks#show
-#                           PATCH  /categorybookmarks/:id(.:format)               categorybookmarks#update
-#                           PUT    /categorybookmarks/:id(.:format)               categorybookmarks#update
-#                           DELETE /categorybookmarks/:id(.:format)               categorybookmarks#destroy
-#                user_index GET    /user(.:format)                                user#index
-#                           POST   /user(.:format)                                user#create
-#                  new_user GET    /user/new(.:format)                            user#new
-#                 edit_user GET    /user/:id/edit(.:format)                       user#edit
-#                      user GET    /user/:id(.:format)                            user#show
-#                           PATCH  /user/:id(.:format)                            user#update
-#                           PUT    /user/:id(.:format)                            user#update
-#                           DELETE /user/:id(.:format)                            user#destroy
+# root GET    /                                               users#index
+#            user_bookmarks GET    /users/:user_id/bookmarks(.:format)             bookmarks#index
+#                           POST   /users/:user_id/bookmarks(.:format)             bookmarks#create
+#         new_user_bookmark GET    /users/:user_id/bookmarks/new(.:format)         bookmarks#new
+#             edit_bookmark GET    /bookmarks/:id/edit(.:format)                   bookmarks#edit
+#                  bookmark GET    /bookmarks/:id(.:format)                        bookmarks#show
+#                           PATCH  /bookmarks/:id(.:format)                        bookmarks#update
+#                           PUT    /bookmarks/:id(.:format)                        bookmarks#update
+#                           DELETE /bookmarks/:id(.:format)                        bookmarks#destroy
+#    user_categorybookmarks GET    /users/:user_id/categorybookmarks(.:format)     categorybookmarks#index
+#                           POST   /users/:user_id/categorybookmarks(.:format)     categorybookmarks#create
+# new_user_categorybookmark GET    /users/:user_id/categorybookmarks/new(.:format) categorybookmarks#new
+#     edit_categorybookmark GET    /categorybookmarks/:id/edit(.:format)           categorybookmarks#edit
+#          categorybookmark GET    /categorybookmarks/:id(.:format)                categorybookmarks#show
+#                           PATCH  /categorybookmarks/:id(.:format)                categorybookmarks#update
+#                           PUT    /categorybookmarks/:id(.:format)                categorybookmarks#update
+#                           DELETE /categorybookmarks/:id(.:format)                categorybookmarks#destroy
+#                     users GET    /users(.:format)                                users#index
+#                           POST   /users(.:format)                                users#create
+#                  new_user GET    /users/new(.:format)                            users#new
+#                 edit_user GET    /users/:id/edit(.:format)                       users#edit
+#                      user GET    /users/:id(.:format)                            users#show
+#                           PATCH  /users/:id(.:format)                            users#update
+#                           PUT    /users/:id(.:format)                            users#update
+#                           DELETE /users/:id(.:format)                            users#destroy
