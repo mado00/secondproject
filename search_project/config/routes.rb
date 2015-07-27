@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+
 # Should the bookmark resources be under category_bookmarks? 
 # In the bookmarks id there are no user_id - Insure user has to be logged in
 
