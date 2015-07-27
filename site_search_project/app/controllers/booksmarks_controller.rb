@@ -14,13 +14,30 @@ class BooksmarksController < ApplicationController
         redirect_to user_index, notice: "Bookmark has been added"
       else
         render :new
+      end
   end
 
   def edit
     @categoryBookmark = CategoryBookmark.all
   end
 
+  def show
+    @bookmark_categorybookmarks = @bookmark.categorybookmarks
+  end
+
+
   def update
+    @bookmark.update(bookmark_params)
+    if @bookmark.save
+      redirect_to bookmark_path(@bookmark), notice "Bookmark has been updated"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @bookmark.destroy
+    redirect_to booksmark_path
   end
 
   private
