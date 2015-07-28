@@ -1,10 +1,10 @@
 <h2>Categories</h2>
 
 <div class="row">
-	<% @categorybookmarks.each do |bookmark| %>
+	<% @categorybookmarks.each do |category| %>
 		<div class="col-sm-3">
 			<div class="caption">
-				<%= bookmark.name %>
+				<%= link_to "#{category.name}", category_bookmark_path(category)%>
 			</div>
 
 		</div>
