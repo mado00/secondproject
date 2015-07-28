@@ -20,7 +20,7 @@ class BookmarksController < ApplicationController
   end
 
   def edit
-    @categorybookmark = CategoryBookmark.all
+    @categorybookmarks = CategoryBookmark.all
   end
 
   def show
@@ -29,13 +29,14 @@ class BookmarksController < ApplicationController
 
 
   def update
-    # @bookmark.update(bookmark_params)
-    # if @bookmark.save
-    #   redirect_to bookmark_path(@bookmark), notice "Bookmark has been updated"
-    # else
-    #   render :edit
-    # end
-  end
+    @bookmark.update(bookmark_params)
+    if @bookmark.save
+      redirect_to bookmark_path(@bookmark), notice: 'Superhero has been Successfully Updated'
+    else
+      render :edit
+    end
+  end  
+
 
   def destroy
     @bookmark.destroy
