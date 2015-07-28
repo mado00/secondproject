@@ -3,7 +3,8 @@ class CategoryBookmarksController < ApplicationController
   before_action :set_user, only: [:index, :new, :create]
   before_action :confirm_logged_in
   before_action :ensure_correct_user_for_category, only: [:edit, :update, :destroy]
-
+  # Need to add the ability to only see your bookmarks and category bookmarks insure correct user
+  
   def index
     @categorybookmarks = CategoryBookmark.all
   end
@@ -14,9 +15,10 @@ class CategoryBookmarksController < ApplicationController
   end
 
   def create
-    @categorybookmark = CategoryBookmark.create(categorybookmark_params)
+    @categorybookmark = @user.category_bookmarks.create categorybookmark_params
     if @categorybookmark.save
-      redirect_to category_bookmarks_path
+      # Need to create a notice
+      redirect_to user_category_bookmarks_path(@user), notice: "Category has been added"
     else
       render :new
     end
@@ -33,7 +35,7 @@ class CategoryBookmarksController < ApplicationController
   def update
     @categorybookmark.update(categorybookmark_params)
     if @categorybookmark.save
-      redirect_to category_bookmarks_path
+      redirect_to user_category_bookmarks_path(current_user)
     else
       render :edit
     end
@@ -41,18 +43,19 @@ class CategoryBookmarksController < ApplicationController
 
   def destroy
     @categorybookmark.destroy
-    redirect_to category_bookmarks_path
+    redirect_to user_category_bookmarks_path(current_user)
   end
 
   private
     def set_category
-      @categorybookmark = CategoryBookmark.find_by_id params[:id]
+      @categorybookmark = CategoryBookmark.find_by(id: params[:id])
     end
 
     def categorybookmark_params
       params.require(:category_bookmark).permit(
         :name,
-        :bookmark_id => [])
+        :bookmark_ids => []
+        )
     end
 
     def set_user
@@ -62,7 +65,7 @@ class CategoryBookmarksController < ApplicationController
     def ensure_correct_user_for_category
       categorybookmark = CategoryBookmark.find params[:id]
       unless categorybookmark.user.id == session[:user_id]
-        redirect_to login_path, alert: "Not authorized"
+        redirect_to user_category_bookmarks_path(current_user), alert: "Not authorized"
     end
   end
 end

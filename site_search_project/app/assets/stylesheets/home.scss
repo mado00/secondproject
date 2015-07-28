@@ -1,0 +1,58 @@
+body {
+  height: 680px;
+}
+#main .navbar-default {
+  background-color: rgba(255,255,255,0.4);
+  border-bottom: 0;
+
+}
+
+form {
+  margin-top: 1.5em;
+}
+
+
+#about {
+   top: 620px;
+}
+
+#us img{
+   width: 80px;
+   height: 80px;
+
+}
+
+.detail {
+   font-size: 20px;
+}
+
+.toTop {
+  margin-top: 400px;
+  display: inline-block;
+  background: #0bd;
+  padding: 15px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.row {
+  border: 4px solid pink;
+}
+
+.logo {
+  width: 95%;
+  height: 400px;
+
+}
+
+#full-width-img.col-sm-12 {
+  padding-left: 0;
+  padding-right: 0;
+  /*display: none;*/
+}
+
+#full-width-img.col-sm-12 .col-md-4.col-xs-12 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
