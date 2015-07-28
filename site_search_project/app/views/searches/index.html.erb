@@ -1,0 +1,19 @@
+<h1>POODLE</h1>
+
+<%= form_for @search do |f| %>
+    <%= f.label "Url" %>
+    <%= f.text_field :url %><br />
+    <%= f.submit%>
+<% end %>
+
+<br />
+
+<% if @searches %>
+	<% @searches.reverse_each do |search| %>
+	<h2><strong><%= search.url %></strong></h2>
+		<% search.results.each do |result| %>
+			<p><%= link_to result.name, result.url %></p>
+			<%= result.description %>
+		<% end %>
+	<% end %>
+<% end %>

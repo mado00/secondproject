@@ -27,11 +27,31 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+
+gem "bootstrap-sass"
+
+gem "bootswatch-rails"
+
+gem 'puma'
+
+gem 'nokogiri'
+
+gem 'typhoeus'
+
+gem 'sidekiq'
+
+gem 'handlebars_assets'
+
+gem 'activerecord-import', '~> 0.7.0'
+
+gem 'mechanize'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem 'font-awesome-sass'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -42,7 +62,7 @@ gem 'font-awesome-sass'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
+  gem 'better_errors'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def confirm_admin
   	unless current_user.is_admin
-  		redirect_to home_path, alert: "You must be an Admininstrater"
+  		redirect_to home_path, alert: "You must be an Admininstrator"
   	end
   end
 
@@ -25,8 +25,10 @@ class ApplicationController < ActionController::Base
 
   def current_user
   	return unless session[:user_id]
+  	
   		# Will define @current_user if it its not already defined
   		@current_user ||= User.find_by_id(session[:user_id])
+  		
   	end
   		helper_method :current_user
   end

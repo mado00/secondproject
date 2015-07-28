@@ -4,13 +4,13 @@
 	<% @bookmarks.each do |bookmark| %>
 		<div class="col-sm-3">
 			<div class="caption">
-				<%= bookmark.name %>
+				Category: <%= bookmark.category_bookmarks[1] %>
+			</div>
+			<div class="caption">
+				Bookmark: <%= link_to "#{bookmark.name}", bookmark_path(bookmark) %>
 			</div>
 			<div>
-				<%= bookmark.url %>
-			</div>
-			<div>
-				<%= link_to "#{bookmark.name}", bookmark_path(bookmark) %>
+				URL: <%= bookmark.url %>
 			</div>
 		</div>
 		<% end %>
