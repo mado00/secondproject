@@ -1,5 +1,8 @@
 class CategoryBookmarksController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:index, :new, :create]
+  before_action :confirm_logged_in
+  before_action :ensure_correct_user_for_category, only: [:edit, :update, :destroy]
 
   def index
     @categorybookmarks = CategoryBookmark.all
@@ -52,4 +55,14 @@ class CategoryBookmarksController < ApplicationController
         :bookmark_id => [])
     end
 
+    def set_user
+      @user = User.find params[:user_id]
+    end
+
+    def ensure_correct_user_for_category
+      categorybookmark = CategoryBookmark.find params[:id]
+      unless categorybookmark.user.id == session[:user_id]
+        redirect_to login_path, alert: "Not authorized"
+    end
+  end
 end

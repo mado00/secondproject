@@ -1,5 +1,7 @@
 class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:show, :edit, :update, :destroy]
+  before_action :confirm_logged_in
+  before_action :set_categorybookmarks, only: [:show]
 
   def index
     @bookmarks = Bookmark.all
@@ -54,6 +56,10 @@ class BookmarksController < ApplicationController
 
     def set_bookmark
       @bookmark = Bookmark.find_by(id: params[:id])
+    end
+
+    def set_categorybookmarks
+      @categorybookmark = CategoryBookmark.find_by_id params[:id]
     end
 
 end
