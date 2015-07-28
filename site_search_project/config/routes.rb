@@ -2,6 +2,9 @@ Rails.application.routes.draw do
  
 
 
+ get 'searches/index', to: 'searches#index', as: 'searches'
+ post 'searches/index', to: 'searches#new', as: 'new_search'
+
  # Do booksmarks need to go under the createBookmark routes?
  # double check that create update destroy uses the user_id
  root "users#index"
