@@ -20,6 +20,11 @@ class CategoryBookmarksController < ApplicationController
   end
 
   def edit
+    @bookmarks = Bookmark.all
+  end
+
+  def show
+    @categorybookmark_bookmarks = @categorybookmark.bookmarks
   end
 
   def update
