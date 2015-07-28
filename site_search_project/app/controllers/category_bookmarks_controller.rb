@@ -7,6 +7,7 @@ class CategoryBookmarksController < ApplicationController
 
   def new
     @categorybookmark = CategoryBookmark.new
+    @bookmarks = Bookmark.all
   end
 
   def create

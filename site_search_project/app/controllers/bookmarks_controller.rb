@@ -7,7 +7,7 @@ class BookmarksController < ApplicationController
 
   def new
     @bookmark = Bookmark.new
-    @categoryBookmark = CategoryBookmark.all
+    @categorybookmarks = CategoryBookmark.all
   end
 
   def create
@@ -24,7 +24,7 @@ class BookmarksController < ApplicationController
   end
 
   def show
-    @bookmark_categorybookmarks = @bookmark.categorybookmarks
+    @bookmark_categorybookmarks = @bookmark.category_bookmarks
   end
 
 
@@ -39,7 +39,7 @@ class BookmarksController < ApplicationController
 
   def destroy
     @bookmark.destroy
-    redirect_to booksmark_path
+    redirect_to bookmarks_path
   end
 
   private

@@ -9,6 +9,9 @@
 			<div>
 				<%= bookmark.url %>
 			</div>
+			<div>
+				<%= link_to "#{bookmark.name}", bookmark_path(bookmark) %>
+			</div>
 		</div>
 		<% end %>
 </div>

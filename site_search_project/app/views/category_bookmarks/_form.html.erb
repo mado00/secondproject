@@ -8,6 +8,15 @@
 		</div>
 	</div>
 
+	<div class="form-group">
+    <%= f.collection_check_boxes(:bookmark_ids, @bookmarks, :id, :name) do |b| %>
+        <span>
+            <%= b.check_box %>
+            <%= b.label %>
+        </span>
+    <% end %>
+  </div>
+
 
 	<div class="actions col-sm-offset-2">
 		<%= f.submit class:"btn btn-primary" %>
