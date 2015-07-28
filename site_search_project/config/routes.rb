@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   
 
  get 'googles/index', to: 'googles#index', as: 'googles'
-  post 'googles/index', to: 'googles#new', as: 'new_search'
+ post 'googles/index', to: 'googles#new', as: 'new_search'
 
  # Do booksmarks need to go under the createBookmark routes?
  # double check that create update destroy uses the user_id
- root "users#index"
+ root "sessions#index"
 
   resources :users do
  # Do booksmarks need to go under the createBookmark routes?

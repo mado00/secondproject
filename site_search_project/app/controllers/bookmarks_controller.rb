@@ -1,8 +1,9 @@
-class BookmarksController < ApplicationController
+ class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:show, :edit, :update, :destroy]
   before_action :confirm_logged_in
   before_action :set_categorybookmarks, only: [:show]
   before_action :set_user, only: [:new, :create]
+  before_action :ensure_correct_user_for_bookmarks, only: [:edit, :update, :destroy]
 
   def index
     @bookmarks = Bookmark.all
