@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # resources :users do
     resources :bookmarks, shallow: true
-    resources :categorybookmarks, shallow: true
+    resources :category_bookmarks, shallow: true
   # end
 
 end

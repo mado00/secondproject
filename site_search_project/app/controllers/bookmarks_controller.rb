@@ -13,14 +13,14 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = Bookmark.create(bookmark_params)
       if @bookmark.save
-        redirect_to user_index, notice: "Bookmark has been added"
+        redirect_to bookmarks_path, notice: "Bookmark has been added"
       else
         render :new
       end
   end
 
   def edit
-    @categoryBookmark = CategoryBookmark.all
+    @categorybookmark = CategoryBookmark.all
   end
 
   def show
@@ -29,12 +29,12 @@ class BookmarksController < ApplicationController
 
 
   def update
-    @bookmark.update(bookmark_params)
-    if @bookmark.save
-      redirect_to bookmark_path(@bookmark), notice "Bookmark has been updated"
-    else
-      render :edit
-    end
+    # @bookmark.update(bookmark_params)
+    # if @bookmark.save
+    #   redirect_to bookmark_path(@bookmark), notice "Bookmark has been updated"
+    # else
+    #   render :edit
+    # end
   end
 
   def destroy
@@ -47,7 +47,7 @@ class BookmarksController < ApplicationController
       params.require(:bookmark).permit(
         :name,
         :url,
-        :user_id
+        :user_id,
         :categoryBookmark_id => [])
     end
 

@@ -1,2 +1,12 @@
-<h1>CategoryBookmarks#index</h1>
-<p>Find me in app/views/category_bookmarks/index.html.erb</p>
+<h2>Categories</h2>
+
+<div class="row">
+	<% @categorybookmarks.each do |bookmark| %>
+		<div class="col-sm-3">
+			<div class="caption">
+				<%= bookmark.name %>
+			</div>
+
+		</div>
+		<% end %>
+</div>
