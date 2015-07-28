@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
  
- # Do booksmarks need to go under the createBookmark routes?
- # double check that create update destroy uses the user_id
- # root "users#index"
  	root "favorites#home"
 
+	get '/login', to: "sessions#login", as: 'login'
+	get '/signup', to: "sessions#signup", as: 'signup'
+	post '/login', to: "sessions#attempt_login"
+	post '/signup', to: "sessions#create"
+	get '/home', to: "sessions#index", as: 'home'
+	delete '/logout', to: "sessions#logout", as: "logout"
+
+ # Do booksmarks need to go under the createBookmark routes?
+ # double check that create update destroy uses the user_id
+ 	
   # resources :users do
     resources :bookmarks, shallow: true
     resources :category_bookmarks, shallow: true

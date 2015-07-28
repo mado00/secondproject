@@ -1,0 +1,21 @@
+<h1><%= "#{@categorybookmark.name}" %></h1>
+
+<div class="row">
+<div>
+  	<%= link_to "Edit #{@categorybookmark.name}", edit_category_bookmark_path(@categorybookmark), class:"btn btn-default" %>
+    <%= link_to "Delete #{@categorybookmark.name}", @categorybookmark, method: :delete, data:{alert:"are you sure?"} ,class:"btn btn-primary" %>
+  </div>
+  <% @categorybookmark_bookmarks.each_with_index do |bookmark, i| %>
+  <% if i + 1 < @categorybookmark_bookmarks.length %>
+    <div class="col-sm-6 col-md-4" style="height:436.667px;">
+      <div class="thumbnail">
+        <div class="caption">
+          <div>
+          	<h3><%= bookmark.name %></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
+</div>
