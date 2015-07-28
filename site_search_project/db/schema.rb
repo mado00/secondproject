@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727194831) do
+ActiveRecord::Schema.define(version: 20150728013846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,28 @@ ActiveRecord::Schema.define(version: 20150727194831) do
   add_index "favorites", ["bookmark_id"], name: "index_favorites_on_bookmark_id", using: :btree
   add_index "favorites", ["category_bookmark_id"], name: "index_favorites_on_category_bookmark_id", using: :btree
 
+  create_table "results", force: :cascade do |t|
+    t.string   "name"
+    t.string   "url"
+    t.text     "description"
+    t.string   "image"
+    t.string   "map_url"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "search_id"
+  end
+
+  add_index "results", ["search_id"], name: "index_results_on_search_id", using: :btree
+
+  create_table "searches", force: :cascade do |t|
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password"
@@ -52,4 +74,6 @@ ActiveRecord::Schema.define(version: 20150727194831) do
 
   add_foreign_key "favorites", "bookmarks"
   add_foreign_key "favorites", "category_bookmarks"
+  add_foreign_key "results", "searches"
+  add_foreign_key "searches", "users"
 end
