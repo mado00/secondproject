@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+
 gem "bootstrap-sass"
 
 gem "bootswatch-rails"
@@ -44,6 +45,13 @@ gem 'handlebars_assets'
 gem 'activerecord-import', '~> 0.7.0'
 
 gem 'mechanize'
+
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass'
+gem 'bootswatch-rails'
+gem 'font-awesome-sass'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'

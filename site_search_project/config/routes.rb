@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
- 
 
 	get '/login', to: "sessions#login", as: 'login'
 	get '/signup', to: "sessions#signup", as: 'signup'
@@ -20,6 +19,10 @@ Rails.application.routes.draw do
  root "users#index"
 
   resources :users do
+ # Do booksmarks need to go under the createBookmark routes?
+ # double check that create update destroy uses the user_id
+ 	
+  # resources :users do
     resources :bookmarks, shallow: true
     resources :category_bookmarks, shallow: true
   end
