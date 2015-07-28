@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
  
-
-
  # Do booksmarks need to go under the createBookmark routes?
  # double check that create update destroy uses the user_id
- root "users#index"
+ # root "users#index"
+ 	root "favorites#home"
 
   # resources :users do
     resources :bookmarks, shallow: true
