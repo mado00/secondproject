@@ -1,6 +1,7 @@
 class CategoryBookmark < ActiveRecord::Base
 	belongs_to :user
-	has_many :favorites, dependent: :destroy
+	has_many :favorites
 	# dependent: :destroy not functioning properly 
 	has_many :bookmarks, through: :favorites
 end
+ 
