@@ -43,6 +43,7 @@ form {
   position: absolute;
   width: 40%;
   left: 29%;
+  top: 23%;
 }
 
 #full-width-img.col-sm-12 {
@@ -60,10 +61,21 @@ form {
   position: relative;
   overflow: hidden;
   background-color: grey;
-  
 }
 
 .logo-container:nth-child(even) {
   background-color: lightblue;
 }
+
+
+/*modal popup*/
+h2 {
+  text-align: center;
+}
+
+.p {
+  text-align: center;
+  padding-top: 130px;
+}
+
 

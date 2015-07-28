@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
 
 // $(function() {
@@ -26,6 +27,13 @@
 //   });
 
 // });
+
+$(document).ready(function(){
+    //Handles menu drop down
+    // $('#modal').find('form').click(function (e) {
+    //     e.stopPropagation();
+    // });
+});
 
 
 
