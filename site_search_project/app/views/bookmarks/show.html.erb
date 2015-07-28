@@ -9,7 +9,7 @@
     <%= link_to "Delete #{@bookmark.name}", @bookmark, method: :delete, data:{alert:"are you sure?"} ,class:"btn btn-primary" %>
   </div>
   <% @bookmark_categorybookmarks.each_with_index do |category, i| %>
-  <% if i + 1 < @bookmark_category.length %>
+  <% if i + 1 < @bookmark_categorybookmarks.length %>
     <div class="col-sm-6 col-md-4" style="height:436.667px;">
       <div class="thumbnail">
         <div class="caption">

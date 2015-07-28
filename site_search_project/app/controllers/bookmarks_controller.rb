@@ -2,6 +2,7 @@ class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:show, :edit, :update, :destroy]
   before_action :confirm_logged_in
   before_action :set_categorybookmarks, only: [:show]
+  before_action :set_user, only: [:new, :create]
 
   def index
     @bookmarks = Bookmark.all
@@ -13,9 +14,9 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    @bookmark = Bookmark.create(bookmark_params)
+    @bookmark = @user.bookmarks.create bookmark_params
       if @bookmark.save
-        redirect_to bookmarks_path, notice: "Bookmark has been added"
+        redirect_to user_bookmarks_path(@user), notice: "Bookmark has been added"
       else
         render :new
       end
@@ -33,7 +34,7 @@ class BookmarksController < ApplicationController
   def update
     @bookmark.update(bookmark_params)
     if @bookmark.save
-      redirect_to bookmark_path(@bookmark), notice: 'Superhero has been Successfully Updated'
+      redirect_to user_bookmarks_path(@bookmark), notice: 'Bookmark has been Successfully Updated'
     else
       render :edit
     end
@@ -42,7 +43,7 @@ class BookmarksController < ApplicationController
 
   def destroy
     @bookmark.destroy
-    redirect_to bookmarks_path
+    redirect_to user_bookmarks_path(current_user)
   end
 
   private
@@ -51,7 +52,8 @@ class BookmarksController < ApplicationController
         :name,
         :url,
         :user_id,
-        :categoryBookmark_id => [])
+        :category_bookmark_ids => []
+        )
     end
 
     def set_bookmark
@@ -60,6 +62,17 @@ class BookmarksController < ApplicationController
 
     def set_categorybookmarks
       @categorybookmark = CategoryBookmark.find_by_id params[:id]
+    end
+
+    def set_user
+      @user = User.find params[:user_id]
+    end
+
+    def ensure_correct_user_for_bookmarks
+      bookmark = Bookmark.find params[:id]
+      unless bookmark.user.id == session[:user_id]
+        redirect_to user_bookmarks_path(current_user)
+      end
     end
 
 end
