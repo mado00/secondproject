@@ -33,7 +33,7 @@
         <% if current_user %>
         <li class="active"><%= link_to "Bookmarks", user_bookmarks_path(current_user) %></li>
         <li class="active"><%= link_to "Add Bookmark Category", new_user_category_bookmark_path(current_user) %></li>
-        <li class="active"><%= link_to "Add Bookmark", new_user_bookmark_path(current_user) %></li>
+        <li class="active"><%= link_to "Add Bookmark", new_user_bookmark_path(current_user), :id => "newBookmark" %></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
