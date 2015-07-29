@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
 
 // $(function() {
@@ -29,7 +30,6 @@
 	$(function(){
   	$('#newBookmark').click(function(e) {
 			e.preventDefault();
-
 
     var html = '<br><form id="newWineform" action="javascript:void(0)">' +
                '<div class="form-group">' + 
@@ -56,6 +56,13 @@
 			$('#searchResults').remove()
 		});
 
-
+  $('.toTop').click(function () {
+     console.log('in')
+      $('body,html').animate({
+        scrollTop: 0
+      }, 800);
+      return false;
+  });
+  
 })
 

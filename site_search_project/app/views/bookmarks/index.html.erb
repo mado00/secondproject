@@ -1,17 +1,24 @@
 <h2>Bookmarks</h2>
 
-<div class="row">
-	<% @bookmarks.each do |bookmark| %>
-		<div class="col-sm-3">
-			<div class="caption">
-				Category: <%= bookmark.category_bookmarks[1] %>
-			</div>
-			<div class="caption">
-				Bookmark: <%= link_to "#{bookmark.name}", bookmark_path(bookmark) %>
-			</div>
-			<div>
-				URL: <%= bookmark.url %>
-			</div>
-		</div>
-		<% end %>
+<div class="container">
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Bookmark</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <% @bookmarks.each do |bookmark| %>
+      <td><%= bookmark.catagory_names %></td>
+      <td><%= link_to "#{bookmark.name}", bookmark_path(bookmark) %></td>
+      <td><%= bookmark.url %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3><%= link_to "Add new bookmark", new_user_bookmark_path(current_user) %></h3>
 </div>
