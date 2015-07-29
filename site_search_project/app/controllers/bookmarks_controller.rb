@@ -6,7 +6,11 @@
   before_action :ensure_correct_user_for_bookmarks, only: [:edit, :update, :destroy]
 
   def index
-    @bookmarks = Bookmark.all
+    if current_user
+      @bookmarks = Bookmark.where(user_id: current_user.id)
+    else
+      @bookmarks = Bookmark.all
+    end
   end
 
   def new

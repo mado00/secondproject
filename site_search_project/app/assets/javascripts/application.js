@@ -31,14 +31,6 @@
   	$('#newBookmark').click(function(e) {
 			e.preventDefault();
 
-$(document).ready(function(){
-    //Handles menu drop down
-    // $('#modal').find('form').click(function (e) {
-    //     e.stopPropagation();
-    // });
-});
-
-
     var html = '<br><form id="newWineform" action="javascript:void(0)">' +
                '<div class="form-group">' + 
                 //put on two lines, one for label and one for input
@@ -64,6 +56,13 @@ $(document).ready(function(){
 			$('#searchResults').remove()
 		});
 
-
+  $('.toTop').click(function () {
+     console.log('in')
+      $('body,html').animate({
+        scrollTop: 0
+      }, 800);
+      return false;
+  });
+  
 })
 

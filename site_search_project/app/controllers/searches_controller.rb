@@ -28,7 +28,6 @@ class SearchesController < ApplicationController
 	  		@search.results.create(name: name, description: description, url: url)
 
 	  	end
-
-     redirect_to searches_path
+	  	redirect_to root_path
 	  end
 end

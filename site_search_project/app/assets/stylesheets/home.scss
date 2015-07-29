@@ -1,38 +1,55 @@
 body {
   height: 680px;
 }
-#main .navbar-default {
-  background-color: rgba(255,255,255,0.4);
-  border-bottom: 0;
 
+#main .navbar-default {
+  height: 100px;
+  background-color: rgba(0,0,0,0.4);
+  border-bottom: 0;
+}
+
+#search-btn {
+  padding: 10px 9px;
+  font-size: 16px;
+  border-radius: 20px;
+}
+
+#search-btn:hover {
+  background-color: #000;
+  border: 1px solid #000;
+  color: #FFF;
 }
 
 form {
-  margin-top: 1.5em;
+  margin-top: 2em;
 }
 
+#inputtext {
+  padding: 22px 12px;
+  border-radius: 20px;
+}
+
+/*#login {
+  color: #FFF;
+}
 
 #about {
    top: 620px;
 }
 
-#us img{
-   width: 80px;
-   height: 80px;
-
-}
 
 .detail {
    font-size: 20px;
-}
+}*/
 
 .toTop {
-  margin-top: 400px;
+  margin-top: 100px;
   display: inline-block;
   background: #0bd;
   padding: 15px;
   color: #fff;
   cursor: pointer;
+  border-radius: 20px;
 }
 
 .row {
@@ -77,5 +94,31 @@ h2 {
   text-align: center;
   padding-top: 130px;
 }
+
+#login {
+  border-color: none;
+}
+
+#login {
+  border-color: none;
+}
+
+#bookmarks {
+  margin-top: 1em;
+
+}
+
+#login_link {
+  margin-top: 2px;
+}
+
+#modal_login .modal-dialog {
+  width: 300px;
+
+}
+
+/*#modal {
+  width:;
+}*/
 
 
