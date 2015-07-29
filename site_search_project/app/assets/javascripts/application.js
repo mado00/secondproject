@@ -26,6 +26,36 @@
 //   });
 
 // });
+	$(function(){
+  	$('#newBookmark').click(function(e) {
+			e.preventDefault();
 
 
+    var html = '<br><form id="newWineform" action="javascript:void(0)">' +
+               '<div class="form-group">' + 
+                //put on two lines, one for label and one for input
+               '<label for="varietal">Name: </label><input type="text" class="form-control" name="varietal" id="varietal" autofocus>' +
+               '</div>' +
+               '<div class="form-group">' +
+               '<label for="vintage">URL: </label>' +
+               '<input type="number" class="form-control" name="vintage" id="vintage" autofocus>' +
+               '</div>' +
+               '<label for="winery">Anything: </label>' +
+               '<input type="text" class="form-control" name="winery" id="winery" autofocus>' +
+               '</div>' +
+               '<br><input type="submit" value="Search" class="btn btn-default btn-xl page-scroll">' +
+               '</form>';
+
+    $('#searchResults').after(html);
+
+  //   $('#newWineform').submit(function(e) {
+  //     e.preventDefault();
+})
+	
+		$('#searchButton').click(function(e){
+			$('#searchResults').remove()
+		});
+
+
+})
 

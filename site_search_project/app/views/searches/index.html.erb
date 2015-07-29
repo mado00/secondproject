@@ -3,11 +3,12 @@
 <%= form_for @search do |f| %>
     <%= f.label "Url" %>
     <%= f.text_field :url %><br />
-    <%= f.submit%>
+    <%= f.submit 'POODLE SEARCH', :id => 'searchButton' %>
 <% end %>
 
 <br />
 
+<div id="searchResults">
 <% if @searches %>
 	<% @searches.reverse_each do |search| %>
 	<h2><strong><%= search.url %></strong></h2>
@@ -17,3 +18,4 @@
 		<% end %>
 	<% end %>
 <% end %>
+</div>
