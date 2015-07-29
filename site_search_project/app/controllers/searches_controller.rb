@@ -7,6 +7,7 @@ class SearchesController < ApplicationController
 	  def new
 	  	require 'open-uri'
 
+	  	@result = []
 	  	@search = Search.create(url: params[:search][:url])
 	  	keyword = URI.encode(params[:search][:url])
 	  	url = "https://www.google.com/search?q=#{keyword}"
@@ -26,8 +27,11 @@ class SearchesController < ApplicationController
 	  		# page_for_image = Typhoeus.get(url)
 	  		# find_image = Nokogiri::HTML(open(url))
 	  		@search.results.create(name: name, description: description, url: url)
+	  		@result << {name: name, description: description, url: url}
 
 	  	end
-	  	redirect_to root_path
+	  	@search = Search.new
+	  	render :index
+
 	  end
 end

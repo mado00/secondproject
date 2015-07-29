@@ -8,14 +8,13 @@
 
 <br />
 
-<div id="searchResults">
-<% if @searches %>
-	<% @searches.reverse_each do |search| %>
-	<h2><strong><%= search.url %></strong></h2>
-		<% search.results.each do |result| %>
-			<p><%= link_to result.name, result.url %></p>
-			<%= result.description %>
-		<% end %>
+<div id="searchResults" class="container">
+<% if @result %>
+	<% @result.each do |mainResult| %>
+		<div><h4><%= link_to mainResult[:name], mainResult[:url].to_s %></h4></div>
+			<%= mainResult[:description] %>
+			</br>
+			</br>
 	<% end %>
-<% end %>
+	<% end %>
 </div>
