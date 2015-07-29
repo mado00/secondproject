@@ -7,11 +7,14 @@
 		"default_icon": "icon.png",
 		"default_popup": "oodle-popup.html"
 	},
-	"permissions": [
+  "permissions": [
     "tabs",
     "http://*/",
-    "https://*/",
-    "file:///*/*"
-],
+	    "https://*/",
+	    "file:///*/*",
+	    "cookies",
+  	  "*://localhost:3000/*/*"
+  ],
+	
 "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
 }
