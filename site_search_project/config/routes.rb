@@ -17,6 +17,8 @@ Rails.application.routes.draw do
  # double check that create update destroy uses the user_id
  root "sessions#index"
 
+ get '/users/:id/new_visit', to: 'sessions#new_visit'
+
   resources :users do
  # Do booksmarks need to go under the createBookmark routes?
  # double check that create update destroy uses the user_id
