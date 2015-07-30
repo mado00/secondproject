@@ -8,6 +8,7 @@ class SearchesController < ApplicationController
 	  	require 'open-uri'
 
 	  	@result = []
+
 	  	@search = Search.create(url: params[:search][:url])
 	  	keyword = URI.encode(params[:search][:url])
 	  	url = "https://www.google.com/search?q=#{keyword}"
@@ -19,7 +20,7 @@ class SearchesController < ApplicationController
 	  	htmlResponse = htmlRequest.run.response_body
 	  	contents = Nokogiri::HTML(htmlResponse)
 
-	  	agent = Mechanize.new
+	  	# agent = Mechanize.new
 	  	contents.css(".srg .g").each do |result|
 	  		name = result.css(".r").text
 	  		description = result.css(".st").text

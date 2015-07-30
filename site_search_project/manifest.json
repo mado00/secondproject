@@ -1,0 +1,11 @@
+{
+	"name": "Oodle",
+	"version": "1.0",
+	"manifest_version": 2,
+	"description": "website visits stats",
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_popup": "oodle-popup.html"
+	}
+
+}

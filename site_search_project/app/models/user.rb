@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 	has_many :searches, dependent: :destroy
 	has_many :bookmarks, dependent: :destroy
 	has_many :category_bookmarks, dependent: :destroy
+	has_many :visits, dependent: :destroy
 
 	has_secure_password
 	validates :username, uniqueness: {case_sensitive: false}, presence: true
