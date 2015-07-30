@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20150729224804) do
 
   # These are extensions that must be enabled in order to support this database
@@ -75,8 +76,20 @@ ActiveRecord::Schema.define(version: 20150729224804) do
     t.string   "search_name"
   end
 
+  create_table "visits", force: :cascade do |t|
+    t.string   "url"
+    t.string   "time_amount"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.string   "title"
+  end
+
+  add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
+
   add_foreign_key "favorites", "bookmarks"
   add_foreign_key "favorites", "category_bookmarks"
   add_foreign_key "results", "searches"
   add_foreign_key "searches", "users"
+  add_foreign_key "visits", "users"
 end

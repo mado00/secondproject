@@ -7,8 +7,10 @@ Rails.application.routes.draw do
 	# get '/home', to: "sessions#index", as: 'home'
 	delete '/logout', to: "sessions#logout", as: "logout"
 
-	root 'favorites#home'
+
+	root 'sessions#login'
 	# root 'sessions#index'
+
 
  # get 'searches/index', to: 'searches#index', as: 'searches'
  # post 'searches/index', to: 'searches#new', as: 'new_search'
@@ -19,6 +21,9 @@ Rails.application.routes.draw do
 
 
 
+
+ get '/users/:id/new_visit', to: 'sessions#new_visit'
+ get '/users/:id/bookmarks/new_from_extension', to: 'bookmarks#create_from_extension'
 
   resources :users do
  # Do booksmarks need to go under the createBookmark routes?

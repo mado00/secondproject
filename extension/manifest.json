@@ -1,0 +1,21 @@
+{
+	"name": "Oodle",
+	"version": "1.0.0",
+	"manifest_version": 2,
+	"description": "website visits stats",
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_popup": "oodle-popup.html"
+	},
+ 
+  "permissions": [
+    "tabs",
+    "http://*/",
+	    "https://*/",
+	    "file:///*/*",
+	    "cookies",
+  	  "http://localhost:3000/"
+  ],
+
+"content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
+}

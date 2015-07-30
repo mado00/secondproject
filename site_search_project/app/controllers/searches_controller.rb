@@ -24,7 +24,7 @@ class SearchesController < ApplicationController
 	  	htmlResponse = htmlRequest.run.response_body
 	  	contents = Nokogiri::HTML(htmlResponse)
 
-	  	agent = Mechanize.new
+	  	# agent = Mechanize.new
 	  	contents.css(".srg .g").each do |result|
 	  		name = result.css(".r").text
 	  		description = result.css(".st").text
