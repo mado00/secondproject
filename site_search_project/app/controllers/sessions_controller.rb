@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :prevent_login_signup, only: [:signup, :create, :login, :attempt_login]
+  before_action :confirm_logged_in, only: [:index]
 
   def index
   end
@@ -29,6 +30,7 @@ class SessionsController < ApplicationController
   			session[:user_id] = found_user.id
         cookies[:user_id] = found_user.id
   			redirect_to home_path
+
   		else
   			flash[:alert] = "username or password is invalid"
   			redirect_to login_path(@user)

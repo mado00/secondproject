@@ -4,10 +4,8 @@ Rails.application.routes.draw do
 	get '/signup', to: "sessions#signup", as: 'signup'
 	post '/login', to: "sessions#attempt_login"
 	post '/signup', to: "sessions#create"
-	get '/home', to: "sessions#index", as: 'home'
+	# get '/home', to: "sessions#index", as: 'home'
 	delete '/logout', to: "sessions#logout", as: "logout"
-
-
 
 
  get 'searches/index', to: 'searches#index', as: 'searches'
@@ -15,7 +13,10 @@ Rails.application.routes.draw do
 
  # Do booksmarks need to go under the createBookmark routes?
  # double check that create update destroy uses the user_id
- root "sessions#index"
+ # root "sessions#index"
+
+
+
 
  get '/users/:id/new_visit', to: 'sessions#new_visit'
 

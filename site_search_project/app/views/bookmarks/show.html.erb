@@ -1,9 +1,10 @@
+<div class="container">
 <h1><%= "#{@bookmark.name}" %></h1>
 <p><%=@bookmark.name %></p>
 <p><%=@bookmark.url %></p>
 
 
-<div class="row">
+<!-- <div class="row"> -->
 <div>
   	<%= link_to "Edit #{@bookmark.name}", edit_bookmark_path(@bookmark), class:"btn btn-default" %>
     <%= link_to "Delete #{@bookmark.name}", @bookmark, method: :delete, data:{alert:"are you sure?"} ,class:"btn btn-primary" %>
@@ -21,4 +22,5 @@
     </div>
   <% end %>
   <% end %>
+<!-- </div> -->
 </div>
