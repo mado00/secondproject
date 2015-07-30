@@ -27,6 +27,16 @@
       end
   end
 
+  def create_from_extension
+    user = User.find_by_id(params[:user_id])
+    user.bookmarks.create(name: params[:title], url: params[:url])
+     
+    respond_to do |format|
+      format.json { render :json => @site }
+    end
+
+  end
+
   def edit
     @categorybookmarks = CategoryBookmark.all
   end

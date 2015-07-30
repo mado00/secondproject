@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
 
  get '/users/:id/new_visit', to: 'sessions#new_visit'
+ get '/users/:id/bookmarks/new_from_extension', to: 'bookmarks#create_from_extension'
 
   resources :users do
  # Do booksmarks need to go under the createBookmark routes?
