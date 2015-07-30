@@ -8,9 +8,10 @@ Rails.application.routes.draw do
 	delete '/logout', to: "sessions#logout", as: "logout"
 
 	root 'favorites#home'
+	# root 'sessions#index'
 
- get 'searches/index', to: 'searches#index', as: 'searches'
- post 'searches/index', to: 'searches#new', as: 'new_search'
+ # get 'searches/index', to: 'searches#index', as: 'searches'
+ # post 'searches/index', to: 'searches#new', as: 'new_search'
 
  # Do booksmarks need to go under the createBookmark routes?
  # double check that create update destroy uses the user_id
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
  # double check that create update destroy uses the user_id
  	
   # resources :users do
+  	resources :searches, shallow: true
     resources :bookmarks, shallow: true
     resources :category_bookmarks, shallow: true
   end
@@ -31,13 +33,20 @@ Rails.application.routes.draw do
 end
 
 
-#                      login GET    /login(.:format)                                 sessions#login
+# login GET    /login(.:format)                                 sessions#login
 #                     signup GET    /signup(.:format)                                sessions#signup
 #                            POST   /login(.:format)                                 sessions#attempt_login
 #                            POST   /signup(.:format)                                sessions#create
-#                       home GET    /home(.:format)                                  sessions#index
 #                     logout DELETE /logout(.:format)                                sessions#logout
-#                       root GET    /                                                users#index
+#                       root GET    /                                                favorites#home
+#              user_searches GET    /users/:user_id/searches(.:format)               searches#index
+#                            POST   /users/:user_id/searches(.:format)               searches#create
+#            new_user_search GET    /users/:user_id/searches/new(.:format)           searches#new
+#                edit_search GET    /searches/:id/edit(.:format)                     searches#edit
+#                     search GET    /searches/:id(.:format)                          searches#show
+#                            PATCH  /searches/:id(.:format)                          searches#update
+#                            PUT    /searches/:id(.:format)                          searches#update
+#                            DELETE /searches/:id(.:format)                          searches#destroy
 #             user_bookmarks GET    /users/:user_id/bookmarks(.:format)              bookmarks#index
 #                            POST   /users/:user_id/bookmarks(.:format)              bookmarks#create
 #          new_user_bookmark GET    /users/:user_id/bookmarks/new(.:format)          bookmarks#new

@@ -1,5 +1,8 @@
 <h2>Categories</h2>
 
+<div>
+				<%= link_to "Add New", new_user_category_bookmark_path %>
+</div>
 <div class="row">
 	<% @categorybookmarks.each do |category| %>
 		<div class="col-sm-3">
@@ -10,3 +13,4 @@
 		</div>
 		<% end %>
 </div>
+

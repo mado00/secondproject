@@ -1,19 +1,15 @@
-class SearchesController < ApplicationController
-  	before_action :set_user, only: [:index, :new, :create]
-  	before_action :confirm_logged_in
+class UsersController < ApplicationController
 
-
-  def index
+	def index
 	  	@search = Search.new
-	  	@searches = Search.all
-	  	@bookmarks = Bookmark.all
+	  	@searches = User.all
 	  end
 
-	  def create
+	  def new
 	  	require 'open-uri'
 	  	
 	  	@result = []
-	  	@search = @user.searches.create search_params
+	  	@search = Search.create(url: params[:search][:url])
 	  	keyword = URI.encode(params[:search][:url])
 	  	url = "https://www.google.com/search?q=#{keyword}"
 	  	htmlRequest = Typhoeus::Request.new(
@@ -36,21 +32,21 @@ class SearchesController < ApplicationController
 
 	  	end
 	  	@search = Search.new
-	  	@bookmarks = Bookmark.all
 	  	render :index
 
 	  end
 
-	 private
-	  
-	  def set_user
-	  	@user = User.find params[:user_id]
-	  end
+	def show
 
-	  def search_params
+  end
+
+  private 
+  def search_params
       params.require(:search).permit(
-        :url,
-        :user_id
+        :name,
+        :user_ids => []
         )
-    end
+  end
+
+
 end

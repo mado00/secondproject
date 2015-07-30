@@ -16,53 +16,26 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-// $(function() {
+// $(document).ready(function() {
+//  // executes when HTML-Document is loaded and DOM is ready
+//  $('#searchResults').hide()
 
-//   $('body').on('mouseenter', function(e){
-//     e.preventDefault;
-//     console.log("clicked!");
-//     $('#full-width-img').fadeIn('slow', function(){
-//       $(this).delay(5000);
-//     })
+//  $('#searchButton').click(function(){
+//     $('#searchResults').show().prop("disabled", false);
 //   });
 
-// });
-	$(function(){
-  	$('#newBookmark').click(function(e) {
-			e.preventDefault();
-
-    var html = '<br><form id="newWineform" action="javascript:void(0)">' +
-               '<div class="form-group">' + 
-                //put on two lines, one for label and one for input
-               '<label for="varietal">Name: </label><input type="text" class="form-control" name="varietal" id="varietal" autofocus>' +
-               '</div>' +
-               '<div class="form-group">' +
-               '<label for="vintage">URL: </label>' +
-               '<input type="number" class="form-control" name="vintage" id="vintage" autofocus>' +
-               '</div>' +
-               '<label for="winery">Anything: </label>' +
-               '<input type="text" class="form-control" name="winery" id="winery" autofocus>' +
-               '</div>' +
-               '<br><input type="submit" value="Search" class="btn btn-default btn-xl page-scroll">' +
-               '</form>';
-
-    $('#searchResults').after(html);
-
-  //   $('#newWineform').submit(function(e) {
-  //     e.preventDefault();
-})
-	
-		$('#searchButton').click(function(e){
-			$('#searchResults').remove()
-		});
-
-  $('.toTop').click(function () {
-     console.log('in')
-      $('body,html').animate({
-        scrollTop: 0
-      }, 800);
-      return false;
-  });
   
-})
+// });
+
+
+
+
+
+
+
+
+
+
+
+
 
