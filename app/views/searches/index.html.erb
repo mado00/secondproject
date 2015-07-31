@@ -59,7 +59,7 @@
   <% @bookmarks.each do |bookmark| %>
 
    <div class="logo-container col-xs-12 col-sm-2 img-responsive" style="height:210px">
-   <a href="<%= bookmark.url %>" target="_blank">
+   <a href="<%= bookmark.url %>">
   		<img class="logo" src="<%= bookmark.logo %>" alt>
   		</a>
       </div>
@@ -81,6 +81,7 @@
       <% if current_user %>
           <%= form_for [@user, @bookmark] do |f| %>
           <%= f.hidden_field :name, :value => mainResult[:name]  %>
+          <%= f.hidden_field :url, :value => mainResult[:url] %>
           <%= f.button "", :class => "glyphicon glyphicon-star", :id => "login" %>
             <% end %>
         <% else %>

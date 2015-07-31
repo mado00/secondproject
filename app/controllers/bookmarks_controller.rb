@@ -58,7 +58,7 @@
 
   def destroy
     @bookmark.destroy
-    redirect_to user_searches_path(current_user)
+    redirect_to searches_path
   end
 
   private
