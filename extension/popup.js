@@ -1,23 +1,29 @@
+ 	var rootDomain,
+			user_id,
+			ms,
+			url,
+			time = 604800000;
+	 
 
-  var url,
-		user_id,
-		title;
-
-chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
-    url = tabs[0].url;
-    title = tabs[0].title;
-    $("h3").append(title + " *** " + url)
-		  chrome.tabs.onActiveChanged.addListener(function() {
-				alert("changed")	          				
-		  });
-});
-
+	 chrome.history.search({
+	    'text': '',                // Return every history item...
+	    'startTime': time,  // accessed less than x time ago.
+	    'maxResults': 1            // 0 == all results
+	    },	function(historyItems) {
+	      	 url = historyItems[0].url;
+	      	  rootDomain = new URL(url).hostname;
+	    		var ms_total = historyItems[0].lastVisitTime
+	    		    ms = (new Date).getTime() - ms_total
+	    			  
+document.querySelector("h2").innerHTML = rootDomain
+document.querySelector("h4").innerHTML = url
 
 chrome.cookies.getAll({url: "http://localhost:3000/"}, function(cookies) {
 	user_id = parseInt(cookies[0].value)
+	min = (ms/1000/60) << 0
 		$.ajax({
 		  url: "http://localhost:3000/users/" + user_id + "/new_visit.json",
-		  data: {url: url, user_id: user_id},
+		  data: {url: rootDomain, time_amount: min, user_id: user_id},
 		  dataType: "json",
 		  success: function(data) {
 		  	"success! -- " + data
@@ -27,11 +33,15 @@ chrome.cookies.getAll({url: "http://localhost:3000/"}, function(cookies) {
 		          			}
 		});
 	});
+});
+
+
+
 
 $("#bookmark").click(function() {
         	$.ajax({ 
 		  url: "http://localhost:3000/users/" + user_id + "/bookmarks/new_from_extension.json",
-		  data: {title: title, url: url, user_id: user_id},
+		  data: {title: rootDomain, url: url, user_id: user_id},
 		  dataType: "json",
 		  success: function(data) {
 		  	"success! -- " + data
