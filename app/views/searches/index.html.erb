@@ -1,24 +1,29 @@
 <nav class="navbar navbar-default navbar-fixed-top" id="nav-bar">
   	
+  
   <form class="form-horizontal" method="POST" action="/searches">
     <div class="form-group">
       <div class="col-sm-5 col-sm-offset-3 col-xs-6 col-xs-offset-1">
         <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
         <input type="text" class="form-control" id="inputtext" placeholder="search" name="search[url]">
       </div>
-      <button type="submit" id="search-btn" class="btn btn-default col-sm-1 col-xs-2">Search</button>
-
-    
-      <div id="login_link" class="col-sm-1 pull-right">
-      <% if current_user %>
-        <%= "hello, #{current_user.username}" %>
-        <%= link_to "Sign Out", logout_path, method: :delete %>
-      <% else %>
-        <%= link_to "Sign In", login_path %>
-      <% end %>
-      </div> 
+      <button type="submit" id="search-btn" class="btn btn-default col-sm-1 col-xs-2">Search</button>  
+      
     </div>
   </form>
+  
+<div id="login_link" class="col-sm-1 pull-right">
+  <% if current_user %>
+    <%= "hello, #{current_user.username}" %>
+    <%= link_to "Sign Out", logout_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sign In", login_path %>
+  <% end %>
+</div> 
+  <% if current_user %>
+    <%= link_to "Bookmarks", user_bookmarks_path(current_user), class: "bookmarks" %>
+  <% end %>
+    
 </nav>
 
 
@@ -47,31 +52,24 @@
 <% end %>
 
 <!-- show logo part -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 <section id="bookmark-logo">
   <div id="full-width-img" class="col-sm-12">
   <% if current_user %>
-  <%= link_to "Bookmarks", user_bookmarks_path(current_user) %>
-  <% end %>
-  <% if current_user %>
-  <% @bookmarks.each do |bookmark| %>
-
-   <div class="logo-container col-xs-12 col-sm-2 img-responsive" style="height:210px">
-   <a href="<%= bookmark.url %>">
-  		<img class="logo" src="<%= bookmark.logo %>" alt>
-  		</a>
-      </div>
-   <% end %>
+    <% @bookmarks.each do |bookmark| %>
+    <div class="logo-container col-xs-12 col-sm-2 img-responsive" style="height:210px">
+      <a href="<%= bookmark.url %>">
+    	<img class="logo" src="<%= bookmark.logo %>" alt>
+      </a>
+    </div>
+    <% end %>
+   
    <% end %>
   </div>
 </section>
+
+
+
 
 
 

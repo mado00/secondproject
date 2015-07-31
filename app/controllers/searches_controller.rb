@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
   def index
 	  	@search = Search.new
 	  	@searches = Search.all
-	  	@bookmarks = Bookmark.limit(24)
+	  	@bookmarks = Bookmark.limit(10)
 	  end
 
 	  def create
@@ -45,8 +45,7 @@ class SearchesController < ApplicationController
 
 	  	render :index
 
-	  	
-
+	
 
 	  end
 
