@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+	root 'bookmarks#index'
+
 	get '/login', to: "sessions#login", as: 'login'
 	get '/signup', to: "sessions#signup", as: 'signup'
 	post '/login', to: "sessions#attempt_login"
@@ -8,27 +10,23 @@ Rails.application.routes.draw do
 	delete '/logout', to: "sessions#logout", as: "logout"
 
 
- get 'searches/index', to: 'searches#index', as: 'searches'
- post 'searches/index', to: 'searches#new', as: 'new_search'
+ get '/searches/index', to: 'searches#index', as: 'searches'
+ post '/searches/index', to: 'searches#new', as: 'new_search'
 
  # Do booksmarks need to go under the createBookmark routes?
  # double check that create update destroy uses the user_id
  # root "sessions#index"
 
-
-
-
- get '/users/:id/new_visit', to: 'sessions#new_visit'
- get '/users/:id/bookmarks/new_from_extension', to: 'bookmarks#create_from_extension'
-
   resources :users do
  # Do booksmarks need to go under the createBookmark routes?
  # double check that create update destroy uses the user_id
  	
-  # resources :users do
     resources :bookmarks, shallow: true
     resources :category_bookmarks, shallow: true
   end
+
+  get '/users/:id/new_visit', to: 'sessions#new_visit'
+ get '/users/:id/bookmarks/new_from_extension', to: 'bookmarks#create_from_extension'
 
 end
 
