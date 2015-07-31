@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
   		if found_user && found_user.authenticate(params[:password])
   			session[:user_id] = found_user.id
         cookies[:user_id] = found_user.id
-  			redirect_to home_path
+  			redirect_to searches_path
 
   		else
   			flash[:alert] = "username or password is invalid"

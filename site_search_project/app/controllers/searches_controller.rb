@@ -1,19 +1,21 @@
 class SearchesController < ApplicationController
-  	before_action :set_user, only: [:index, :new, :create]
-  	before_action :confirm_logged_in
+  	before_action :set_user, only: [:index, :create]
+  	# before_action :confirm_logged_in
 
 
   def index
 	  	@search = Search.new
 	  	@searches = Search.all
-	  	@bookmarks = Bookmark.all
+	  	@bookmarks = Bookmark.limit(24)
 	  end
 
 	  def create
 	  	require 'open-uri'
 	  	
 	  	@result = []
-	  	@search = @user.searches.create search_params
+	  	if @user && @user.persisted?
+	  		@search = @user.searches.create search_params 
+	  	end
 	  	keyword = URI.encode(params[:search][:url])
 	  	url = "https://www.google.com/search?q=#{keyword}"
 	  	htmlRequest = Typhoeus::Request.new(
@@ -24,7 +26,7 @@ class SearchesController < ApplicationController
 	  	htmlResponse = htmlRequest.run.response_body
 	  	contents = Nokogiri::HTML(htmlResponse)
 
-	  	# agent = Mechanize.new
+	  	agent = Mechanize.new
 	  	contents.css(".srg .g").each do |result|
 	  		name = result.css(".r").text
 	  		description = result.css(".st").text
@@ -36,16 +38,27 @@ class SearchesController < ApplicationController
 
 	  	end
 	  	@search = Search.new
-	  	@bookmarks = Bookmark.all
+	  	@bookmarks = Bookmark.limit(24)
+	  	@bookmark = Bookmark.new
+
+
+
 	  	render :index
+
+	  	
+
 
 	  end
 
 	 private
 	  
 	  def set_user
-	  	@user = User.find params[:user_id]
-	  end
+	  	if current_user.nil?
+	  		@user = User.new
+	  	else
+	  		@user = current_user
+	 		end
+	 	end
 
 	  def search_params
       params.require(:search).permit(
