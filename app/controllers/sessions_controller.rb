@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :prevent_login_signup, only: [:signup, :create, :login, :attempt_login]
+  
   before_action :confirm_logged_in, only: [:index]
 
   def index
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   	if @user.save
   		session[:user_id] = @user.id
       cookies[:user_id] = @user.id
-  		redirect_to home_path
+  		redirect_to searches_path
   	else
   		render :signup
   	end
@@ -49,14 +49,37 @@ class SessionsController < ApplicationController
   end
 
   def new_visit
+
     user = User.find_by_id(params[:user_id])
-    user.visits.create(url: params[:url], title: params[:title])
-     
+    existing_domain = false
+    
+    user.visits.each do |domain| 
+      if domain.url == params[:url]
+        existing_domain = domain
+      end
+    end
+
+    if existing_domain
+      time_amount_first = existing_domain.time_amount
+      new_time_amount = params[:time_amount]
+
+      num1 = time_amount_first.to_i
+      num2 = new_time_amount.to_i
+
+       total_time_amount = num1 += num2
+        # visit = Visit.where(user_id: params[:user_id], url: params[:url])
+        existing_domain.update(time_amount: total_time_amount)  
+      else
+        user.visits.create(url: params[:url], time_amount: params[:time_amount])
+      end
+
+
     respond_to do |format|
       format.json { render :json => @site }
     end
 
-  end
+  
+end
 
   private
 
