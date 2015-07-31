@@ -1,9 +1,8 @@
 class FavoritesController < ApplicationController
  
   def home
-    @favorites = Favorite.limit(6)
+    @favorites = Favorite.limit(24)
     @searches = Search.all
   end
-
 
 end

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-  <form class="form-horizontal" method="POST" action="/searches/index">
+  <form id="search_form" class="form-horizontal" method="POST" action="/searches/index">
     <div class="form-group">
       <div class="col-sm-5 col-sm-offset-3 col-xs-6 col-xs-offset-1">
         <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -13,6 +13,7 @@
         <%= "hello, #{current_user.username}" %>
         <%= link_to "Sign Out", logout_path, method: :delete %>
       <% else %>
+
         <a href="#" id="login" class="navbar-brand" data-toggle="modal" data-target="#modal_login">Login</a>
       <% end %>
       </div> 
@@ -32,6 +33,7 @@
       <div class="modal-body">
        <p><%= link_to "Login", login_path %></p>
        <p><%= link_to "Sign up here", signup_path %></p>
+
        
       </div>
       <div class="modal-footer">
@@ -42,10 +44,11 @@
 </div>
 
 <!-- show logo part -->
+
 <div id="full-width-img" class="col-sm-12">
 <% @favorites.each do |favorite| %>
 
- <div class="logo-container col-xs-12 col-md-4 img-responsive" style="height:300px">
+ <div class="logo-container col-xs-12 col-sm-2 img-responsive" style="height:230px">
  <a href="<%= favorite.bookmark.url %>" target="_blank">
 		<img class="logo" src="<%= favorite.bookmark.logo %>" alt>
 		</a>
@@ -55,24 +58,29 @@
 
 
 <!-- search result -->
-<div class="container">
+<div id="result">
+
 <% if @searches %>
   <% @searches.reverse_each do |search| %>
   <h2><strong><%= search.url %></strong></h2>
     <% search.results.each do |result| %>
+    <div>
     <ul class="list-unstyled col-sm-12">
       <li class="col-sm-1"><a href="#" id="login" class="navbar-brand" data-toggle="modal" data-target="#modal_login"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
       </li>
       <li class="search-title col-sm-11"><h4><%= link_to result.name, result.url %></h4></li>
-      <li class="col-sm-12"><p><%= result.description %></p></li>
+      <li class="col-sm-12"><p id="description"><%= result.description %></p></li>
     </ul>
+    </div>
     <% end %>
   <% end %>
 <% end %>
 
+</div>
 <!-- go back to page -->
 <p class="toTop pull-right">top page</p>
-</div>
+
 
 <!-- <a href="#" id="login" class="navbar-brand" data-toggle="modal" data-target="#modal_login"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></a> -->
+
 

@@ -13,7 +13,7 @@ bookmarks = [{name: 'facebook', url: 'https://www.facebook.com/', logo: 'https:/
 	{name: 'google', url:'https://www.google.com', logo: 'http://fineprintnyc.com/images/blog/history-of-logos/google/google-logo.png', user_id:user.id },
 	{name: 'youtube', url:'https://www.youtube.com/', logo: 'http://3.bp.blogspot.com/-tcXBBmJSzPc/TbI0AdcJgqI/AAAAAAAAAYw/Bg3sqCG9bEs/s1600/youtube-logo.png', user_id:user.id },
 	{name: 'galvanize', url:'http://www.galvanize.com/', logo: 'http://women2.com/wp-content/uploads/2014/09/galvanize_logo.jpg', user_id:user.id },
-	{name: 'ebay', url: 'http://www.ebay.com/', logo: 'http://rack.3.mshcdn.com/media/ZgkyMDEyLzEyLzA0L2RmL2ViYXlyZXZlYWxzLmFCaS5qcGcKcAl0aHVtYgk5NTB4NTM0IwplCWpwZw/6aa62437/eec/ebay-reveals-new-company-logo-7cfa25d9f9.jpg', user_id:user.id },
+	{name: 'ebay', url: 'http://www.ebay.com/', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/48/EBay_logo.png', user_id:user.id },
 	{name: 'apple', url: 'https://www.apple.com/', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/2000px-Apple_logo_black.svg.png', user_id:user.id },
 	{name: 'yahoo', url: 'https://www.yahoo.com/', logo: 'http://img4.wikia.nocookie.net/__cb20150504184654/logopedia/images/c/ca/FoodnetLogo.png', user_id:user.id }]
 
